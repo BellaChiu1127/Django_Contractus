@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Sign
+from .models import Sign, ContractUs
 from .forms import ContractUsForm
 # Create your views here.
 def mainapp_index(request):
@@ -11,6 +11,8 @@ def contract_us(request):
     form = ContractUsForm(request.POST or None)
     if form.is_valid():
         form.save()
+        form = ContractUsForm()
+
     context = {
         'form' : form
     }
