@@ -496,13 +496,33 @@
         </div>
         <div id="sendmessage">Your message has been sent. Thank you!</div>
         <div id="errormessage"></div>
-        <form  method="post" > 
+        <form  method="post" class="contactForm" > 
+          <div class="col-md-6 col-sm-6 col-xs-12 left">
+
+          {% load widget_tweaks %}
           {% csrf_token %}
-          
-          {{ form.as_p }}
-   
-          <input type="submit" value="send">
-        
+          <div class="form-group">
+          {{ form.user_name |add_class:"form-control form " }}
+          <div class="validation"></div>
+          </div>
+          <div class="form-group">
+          {{ form.user_email |add_class:"form-control"}}
+          <div class="validation"></div>
+          </div>
+          <div class="form-group">
+          {{ form.user_subject |add_class:"form-control"}}
+          <div class="validation"></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 right">
+          {{ form.user_message |add_class:"form-control"|attr:"rows:5"}}
+          <div class="validation"></div>
+        </div>
+        <div class="col-xs-12">
+            <!-- Button -->
+            <button type="submit" id="submit" name="submit" class="form contact-form-button light-form-button oswald light">SEND EMAIL</button>
+          </div>
+            
         </form>
 
       </div>
